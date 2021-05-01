@@ -1,4 +1,5 @@
-﻿using Borsa_app2;
+﻿using Borsa_App_3;
+using Borsa_app2;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,6 +42,11 @@ private void admin_form_Load(object sender, EventArgs e)
 
 
             
+        }
+
+        private void admin_onay_b_Click(object sender, EventArgs e)
+        {
+            new Form6().Show();
         }
     }
 }

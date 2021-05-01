@@ -110,10 +110,12 @@ namespace Borsa_App
             this.sifre_tb1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.sifre_tb1.Location = new System.Drawing.Point(44, 100);
             this.sifre_tb1.Name = "sifre_tb1";
+            this.sifre_tb1.PasswordChar = '*';
             this.sifre_tb1.Size = new System.Drawing.Size(197, 20);
             this.sifre_tb1.TabIndex = 2;
             this.sifre_tb1.Text = "Şifre";
             this.sifre_tb1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.sifre_tb1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sifre_tb1_KeyPress);
             // 
             // panel2
             // 

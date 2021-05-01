@@ -21,7 +21,7 @@ namespace Borsa_App
         private void kayıt_ol()
         {
             baglan.Open();
-            SqlCommand komut = new SqlCommand("Select *from data", baglan);
+            SqlCommand komut = new SqlCommand("Select *from Kullanicilar", baglan);
             SqlDataReader oku = komut.ExecuteReader();
 
 
@@ -64,13 +64,14 @@ namespace Borsa_App
             {
                 admin_form admin_panel = new admin_form();
                 admin_panel.Show();
+                this.Close();
             }
             else
             {
                 try
                 {
                     baglan.Open();
-                    string sql = "Select *from data where kullanıcıad=@adi AND sifre=@sifre";
+                    string sql = "Select top (1) * from kullanicilar where KullaniciAd=@adi AND sifre=@Sifre";
                     SqlParameter prm1 = new SqlParameter("adi", kullancı_ad_tb1.Text.Trim());
                     SqlParameter prm2 = new SqlParameter("sifre", sifre_tb1.Text.Trim());
                     SqlCommand komut = new SqlCommand(sql, baglan);
@@ -79,20 +80,23 @@ namespace Borsa_App
                     DataTable dt = new DataTable();
                     SqlDataAdapter da = new SqlDataAdapter(komut);
                     da.Fill(dt);
-
+                    baglan.Close();
                     if (dt.Rows.Count > 0)
                     {
                         uye_islem_form uye_islem = new uye_islem_form();
+                        uye_islem.KullaniciId = int.Parse(dt.Rows[0]["Id"].ToString());
                         uye_islem.Show();
+                        this.Close();
 
                     }
-                    
+
 
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Hatalı Kullanıcı Adı Veya Şifre Girdiniz");
+                    MessageBox.Show(ex.Message);
                 }
 
             }
@@ -111,13 +115,21 @@ namespace Borsa_App
             {
                 MessageBox.Show("Kayıt Başarılı");
                 baglan.Open();
-                SqlCommand komut = new SqlCommand("Insert Into data(adsoyad,kullanıcıad,sifre,tcno,telefon,mail,adres)Values ('" + ad_soyad_tb1.Text.ToString() + "','" + kullanıcı_ad_tb2.Text.ToString() + "','" + sifre_tb2.Text.ToString() + "','" + tcno_tb1.Text.ToString() + "','" + telefon_tb1.Text.ToString() + "','" + mail_tb1.Text.ToString() + "','" + adres_tb1.Text.ToString() + "')", baglan);
+                SqlCommand komut = new SqlCommand("Insert Into Kullanicilar(AdSoyad,KullaniciAd,Sifre,TCNo,Telefon,Mail,Adres)Values ('" + ad_soyad_tb1.Text.ToString() + "','" + kullanıcı_ad_tb2.Text.ToString() + "','" + sifre_tb2.Text.ToString() + "','" + tcno_tb1.Text.ToString() + "','" + telefon_tb1.Text.ToString() + "','" + mail_tb1.Text.ToString() + "','" + adres_tb1.Text.ToString() + "')", baglan);
                 komut.ExecuteNonQuery();
                 baglan.Close();
                 kayıt_ol();
             }
             else
                 MessageBox.Show("Bilgilerinizi Boş Bırakmayınız");
+        }
+
+        private void sifre_tb1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           if(e.KeyChar==13)
+            {
+                giris_b1.PerformClick();
+            }
         }
     }
 }

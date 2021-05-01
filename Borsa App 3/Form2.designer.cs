@@ -62,6 +62,7 @@ namespace Borsa_App
             this.admin_onay_b.TabIndex = 2;
             this.admin_onay_b.Text = "Onay Ver";
             this.admin_onay_b.UseVisualStyleBackColor = true;
+            this.admin_onay_b.Click += new System.EventHandler(this.admin_onay_b_Click);
             // 
             // admin_form
             // 

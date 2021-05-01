@@ -22,19 +22,19 @@ namespace Borsa_app2
         private void verilerinigöster()
         {
             baglan.Open();
-            SqlCommand komut = new SqlCommand("Select *from data", baglan);
+            SqlCommand komut = new SqlCommand("Select *from Kullanicilar", baglan);
             SqlDataReader oku = komut.ExecuteReader();
 
             while (oku.Read())
             {
                 ListViewItem ekle = new ListViewItem();
-                ekle.Text = oku["adsoyad"].ToString();
-                ekle.SubItems.Add(oku["kullanıcıad"].ToString());
-                ekle.SubItems.Add(oku["sifre"].ToString());
-                ekle.SubItems.Add(oku["telefon"].ToString());
-                ekle.SubItems.Add(oku["tcno"].ToString());
-                ekle.SubItems.Add(oku["mail"].ToString());
-                ekle.SubItems.Add(oku["adres"].ToString());
+                ekle.Text = oku["AdSoyad"].ToString();
+                ekle.SubItems.Add(oku["KullaniciAd"].ToString());
+                ekle.SubItems.Add(oku["Sifre"].ToString());
+                ekle.SubItems.Add(oku["Telefon"].ToString());
+                ekle.SubItems.Add(oku["TCNo"].ToString());
+                ekle.SubItems.Add(oku["Mail"].ToString());
+                ekle.SubItems.Add(oku["Adres"].ToString());
                 listView1.Items.Add(ekle);
 
              }
