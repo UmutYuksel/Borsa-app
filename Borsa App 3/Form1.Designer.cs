@@ -115,6 +115,7 @@ namespace Borsa_App
             this.sifre_tb1.TabIndex = 2;
             this.sifre_tb1.Text = "Şifre";
             this.sifre_tb1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.sifre_tb1.Enter += new System.EventHandler(this.sifre_tb1_Enter);
             this.sifre_tb1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sifre_tb1_KeyPress);
             // 
             // panel2
@@ -237,6 +238,7 @@ namespace Borsa_App
             this.Controls.Add(this.label1);
             this.Name = "frm_login";
             this.Text = "LOGİN EKRANI";
+            this.Load += new System.EventHandler(this.frm_login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

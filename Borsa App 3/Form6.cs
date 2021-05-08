@@ -28,6 +28,8 @@ namespace Borsa_App_3
         private void BakiyeOnayDoldur()
         {
             gridViewBakiyeOnay.DataSource = OnayBekleyenKullaniciBakiyeleriniGetir();
+            gridViewBakiyeOnay.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            gridViewBakiyeOnay.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
         }
 
         private DataTable OnayBekleyenKullaniciBakiyeleriniGetir()
@@ -48,6 +50,8 @@ namespace Borsa_App_3
         private void StokOnayDoldur()
         {
             gridViewStokOnay.DataSource = OnayBekleyenKullaniciStoklariniGetir();
+            gridViewStokOnay.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            gridViewStokOnay.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
         }
         private DataTable OnayBekleyenKullaniciStoklariniGetir()
         {

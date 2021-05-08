@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace Borsa_App
 {
@@ -63,8 +64,7 @@ namespace Borsa_App
             if (kullancı_ad_tb1.Text == "admin" && sifre_tb1.Text == "admin")
             {
                 admin_form admin_panel = new admin_form();
-                admin_panel.Show();
-                this.Close();
+                admin_panel.Show(); 
             }
             else
             {
@@ -85,9 +85,7 @@ namespace Borsa_App
                     {
                         uye_islem_form uye_islem = new uye_islem_form();
                         uye_islem.KullaniciId = int.Parse(dt.Rows[0]["Id"].ToString());
-                        uye_islem.Show();
-                        this.Close();
-
+                        uye_islem.Show(); 
                     }
 
 
@@ -130,6 +128,16 @@ namespace Borsa_App
             {
                 giris_b1.PerformClick();
             }
+        }
+
+        private void frm_login_Load(object sender, EventArgs e)
+        {
+            CenterToScreen();
+        }
+
+        private void sifre_tb1_Enter(object sender, EventArgs e)
+        {
+            sifre_tb1.Text = string.Empty;
         }
     }
 }
