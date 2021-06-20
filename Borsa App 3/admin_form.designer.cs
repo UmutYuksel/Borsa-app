@@ -67,7 +67,7 @@ namespace Borsa_App
             // admin_form
             // 
             this.BackgroundImage = global::Borsa_App_3.Properties.Resources.indir;
-            this.ClientSize = new System.Drawing.Size(699, 318);
+            this.ClientSize = new System.Drawing.Size(286, 139);
             this.Controls.Add(this.admin_onay_b);
             this.Controls.Add(this.uye_bilgi_b);
             this.Controls.Add(this.button3);

@@ -97,7 +97,8 @@ namespace Borsa_App_3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 487);
+            this.BackgroundImage = global::Borsa_App_3.Properties.Resources.indir;
+            this.ClientSize = new System.Drawing.Size(803, 484);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form6";
             this.Text = "Form6";

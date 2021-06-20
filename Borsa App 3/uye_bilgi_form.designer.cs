@@ -55,7 +55,7 @@ namespace Borsa_app2
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1295, 559);
+            this.listView1.Size = new System.Drawing.Size(1267, 560);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -109,7 +109,7 @@ namespace Borsa_app2
             // 
             this.Apanel_b.Location = new System.Drawing.Point(642, 524);
             this.Apanel_b.Name = "Apanel_b";
-            this.Apanel_b.Size = new System.Drawing.Size(628, 23);
+            this.Apanel_b.Size = new System.Drawing.Size(613, 23);
             this.Apanel_b.TabIndex = 2;
             this.Apanel_b.Text = "Panele Dön";
             this.Apanel_b.UseVisualStyleBackColor = true;
@@ -119,7 +119,7 @@ namespace Borsa_app2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1295, 559);
+            this.ClientSize = new System.Drawing.Size(1267, 560);
             this.Controls.Add(this.Apanel_b);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);

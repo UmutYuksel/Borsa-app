@@ -17,6 +17,7 @@ namespace Borsa_app2
         public uye_bilgi_form()
         {
             InitializeComponent();
+            CenterToScreen();
         }
         SqlConnection baglan = new SqlConnection("Data Source=HOPE;Initial Catalog=proje;Integrated Security=True");
         private void verilerinigöster()

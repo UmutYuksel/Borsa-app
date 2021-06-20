@@ -115,6 +115,7 @@ namespace Borsa_App
             this.sifre_tb1.TabIndex = 2;
             this.sifre_tb1.Text = "Şifre";
             this.sifre_tb1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.sifre_tb1.TextChanged += new System.EventHandler(this.sifre_tb1_TextChanged);
             this.sifre_tb1.Enter += new System.EventHandler(this.sifre_tb1_Enter);
             this.sifre_tb1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sifre_tb1_KeyPress);
             // 
@@ -140,7 +141,7 @@ namespace Borsa_App
             this.kayıt_b1.Location = new System.Drawing.Point(160, 254);
             this.kayıt_b1.Name = "kayıt_b1";
             this.kayıt_b1.Size = new System.Drawing.Size(75, 23);
-            this.kayıt_b1.TabIndex = 9;
+            this.kayıt_b1.TabIndex = 8;
             this.kayıt_b1.Text = "Kayıt Ol";
             this.kayıt_b1.UseVisualStyleBackColor = true;
             this.kayıt_b1.Click += new System.EventHandler(this.kayıt_b1_Click);
@@ -151,9 +152,10 @@ namespace Borsa_App
             this.adres_tb1.Location = new System.Drawing.Point(38, 219);
             this.adres_tb1.Name = "adres_tb1";
             this.adres_tb1.Size = new System.Drawing.Size(197, 20);
-            this.adres_tb1.TabIndex = 8;
+            this.adres_tb1.TabIndex = 7;
             this.adres_tb1.Text = "Adres";
             this.adres_tb1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.adres_tb1.Enter += new System.EventHandler(this.adres_tb1_Enter);
             // 
             // mail_tb1
             // 
@@ -161,9 +163,10 @@ namespace Borsa_App
             this.mail_tb1.Location = new System.Drawing.Point(38, 193);
             this.mail_tb1.Name = "mail_tb1";
             this.mail_tb1.Size = new System.Drawing.Size(197, 20);
-            this.mail_tb1.TabIndex = 7;
+            this.mail_tb1.TabIndex = 6;
             this.mail_tb1.Text = "E-Mail";
             this.mail_tb1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mail_tb1.Enter += new System.EventHandler(this.mail_tb1_Enter);
             // 
             // tcno_tb1
             // 
@@ -171,9 +174,10 @@ namespace Borsa_App
             this.tcno_tb1.Location = new System.Drawing.Point(38, 167);
             this.tcno_tb1.Name = "tcno_tb1";
             this.tcno_tb1.Size = new System.Drawing.Size(197, 20);
-            this.tcno_tb1.TabIndex = 6;
+            this.tcno_tb1.TabIndex = 5;
             this.tcno_tb1.Text = "TC Kimlik No";
             this.tcno_tb1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tcno_tb1.Enter += new System.EventHandler(this.tcno_tb1_Enter);
             // 
             // telefon_tb1
             // 
@@ -181,9 +185,10 @@ namespace Borsa_App
             this.telefon_tb1.Location = new System.Drawing.Point(38, 140);
             this.telefon_tb1.Name = "telefon_tb1";
             this.telefon_tb1.Size = new System.Drawing.Size(197, 20);
-            this.telefon_tb1.TabIndex = 5;
+            this.telefon_tb1.TabIndex = 4;
             this.telefon_tb1.Text = "Telefon No";
             this.telefon_tb1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.telefon_tb1.Enter += new System.EventHandler(this.telefon_tb1_Enter);
             // 
             // sifre_tb2
             // 
@@ -191,9 +196,10 @@ namespace Borsa_App
             this.sifre_tb2.Location = new System.Drawing.Point(38, 114);
             this.sifre_tb2.Name = "sifre_tb2";
             this.sifre_tb2.Size = new System.Drawing.Size(197, 20);
-            this.sifre_tb2.TabIndex = 4;
+            this.sifre_tb2.TabIndex = 3;
             this.sifre_tb2.Text = "Şifre";
             this.sifre_tb2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.sifre_tb2.Enter += new System.EventHandler(this.sifre_tb2_Enter);
             // 
             // kullanıcı_ad_tb2
             // 
@@ -201,9 +207,10 @@ namespace Borsa_App
             this.kullanıcı_ad_tb2.Location = new System.Drawing.Point(38, 88);
             this.kullanıcı_ad_tb2.Name = "kullanıcı_ad_tb2";
             this.kullanıcı_ad_tb2.Size = new System.Drawing.Size(197, 20);
-            this.kullanıcı_ad_tb2.TabIndex = 3;
+            this.kullanıcı_ad_tb2.TabIndex = 2;
             this.kullanıcı_ad_tb2.Text = "Kullanıcı Adı";
             this.kullanıcı_ad_tb2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.kullanıcı_ad_tb2.Enter += new System.EventHandler(this.kullanıcı_ad_tb2_Enter);
             // 
             // ad_soyad_tb1
             // 
@@ -211,9 +218,10 @@ namespace Borsa_App
             this.ad_soyad_tb1.Location = new System.Drawing.Point(38, 62);
             this.ad_soyad_tb1.Name = "ad_soyad_tb1";
             this.ad_soyad_tb1.Size = new System.Drawing.Size(197, 20);
-            this.ad_soyad_tb1.TabIndex = 2;
+            this.ad_soyad_tb1.TabIndex = 1;
             this.ad_soyad_tb1.Text = "Ad Soyad";
             this.ad_soyad_tb1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ad_soyad_tb1.Enter += new System.EventHandler(this.ad_soyad_tb1_Enter);
             // 
             // label3
             // 
@@ -223,7 +231,7 @@ namespace Borsa_App
             this.label3.Location = new System.Drawing.Point(88, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 25);
-            this.label3.TabIndex = 1;
+            this.label3.TabIndex = 9;
             this.label3.Text = "KAYIT OL";
             // 
             // frm_login

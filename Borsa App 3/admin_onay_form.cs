@@ -17,6 +17,8 @@ namespace Borsa_App_3
         public Form6()
         {
             InitializeComponent();
+            CenterToScreen();
+
         }
 
         private void Form6_Load(object sender, EventArgs e)
@@ -109,5 +111,8 @@ namespace Borsa_App_3
 
             BakiyeOnayDoldur();
         }
+
+       
+
     }
 }

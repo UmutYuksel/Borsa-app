@@ -52,11 +52,25 @@ namespace Borsa_App
             this.label6 = new System.Windows.Forms.Label();
             this.txtMiktarStokSatinAlma = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtBirimFiyatStokSatinAlma = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.btncikisyap = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.gridViewEmirlerim = new System.Windows.Forms.DataGridView();
+            this.cmbParaBirimi = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKullaniciStoklari)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewEmirlerim)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -74,7 +88,7 @@ namespace Borsa_App
             // para_yükleme_b1
             // 
             this.para_yükleme_b1.ForeColor = System.Drawing.Color.Black;
-            this.para_yükleme_b1.Location = new System.Drawing.Point(135, 28);
+            this.para_yükleme_b1.Location = new System.Drawing.Point(156, 28);
             this.para_yükleme_b1.Name = "para_yükleme_b1";
             this.para_yükleme_b1.Size = new System.Drawing.Size(98, 23);
             this.para_yükleme_b1.TabIndex = 6;
@@ -97,7 +111,7 @@ namespace Borsa_App
             // 
             this.hesap_is_tb1.Location = new System.Drawing.Point(6, 30);
             this.hesap_is_tb1.Name = "hesap_is_tb1";
-            this.hesap_is_tb1.Size = new System.Drawing.Size(123, 20);
+            this.hesap_is_tb1.Size = new System.Drawing.Size(76, 20);
             this.hesap_is_tb1.TabIndex = 10;
             // 
             // cmbStokSecimi
@@ -159,7 +173,7 @@ namespace Borsa_App
             this.gridViewKullaniciStoklari.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridViewKullaniciStoklari.Location = new System.Drawing.Point(3, 45);
             this.gridViewKullaniciStoklari.Name = "gridViewKullaniciStoklari";
-            this.gridViewKullaniciStoklari.Size = new System.Drawing.Size(1018, 319);
+            this.gridViewKullaniciStoklari.Size = new System.Drawing.Size(1354, 413);
             this.gridViewKullaniciStoklari.TabIndex = 22;
             // 
             // panel1
@@ -167,6 +181,7 @@ namespace Borsa_App
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtBirimFiyat);
             this.panel1.Controls.Add(this.gridViewKullaniciStoklari);
@@ -175,9 +190,10 @@ namespace Borsa_App
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.txtMiktar);
-            this.panel1.Location = new System.Drawing.Point(29, 12);
+            this.panel1.ForeColor = System.Drawing.Color.Black;
+            this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1024, 381);
+            this.panel1.Size = new System.Drawing.Size(1360, 475);
             this.panel1.TabIndex = 23;
             // 
             // label4
@@ -236,7 +252,11 @@ namespace Borsa_App
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.cmbParaBirimi);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.lblBakiye);
             this.panel2.Controls.Add(this.label1);
@@ -244,18 +264,17 @@ namespace Borsa_App
             this.panel2.Controls.Add(this.para_yükleme_b1);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.hesap_is_tb1);
-            this.panel2.Location = new System.Drawing.Point(29, 401);
+            this.panel2.Location = new System.Drawing.Point(6, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(488, 100);
+            this.panel2.Size = new System.Drawing.Size(655, 106);
             this.panel2.TabIndex = 27;
             // 
             // btnSatinAl
             // 
-            this.btnSatinAl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSatinAl.ForeColor = System.Drawing.Color.Black;
-            this.btnSatinAl.Location = new System.Drawing.Point(238, 54);
+            this.btnSatinAl.Location = new System.Drawing.Point(344, 54);
             this.btnSatinAl.Name = "btnSatinAl";
-            this.btnSatinAl.Size = new System.Drawing.Size(97, 23);
+            this.btnSatinAl.Size = new System.Drawing.Size(97, 25);
             this.btnSatinAl.TabIndex = 28;
             this.btnSatinAl.Text = "Ürün Satın Al";
             this.btnSatinAl.UseVisualStyleBackColor = true;
@@ -303,17 +322,44 @@ namespace Borsa_App
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Controls.Add(this.txtBirimFiyatStokSatinAlma);
+            this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.btnSatinAl);
             this.panel3.Controls.Add(this.cmbStokSecimiSatinAlma);
             this.panel3.Controls.Add(this.txtMiktarStokSatinAlma);
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Location = new System.Drawing.Point(523, 401);
+            this.panel3.ForeColor = System.Drawing.Color.White;
+            this.panel3.Location = new System.Drawing.Point(6, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(354, 100);
+            this.panel3.Size = new System.Drawing.Size(488, 91);
             this.panel3.TabIndex = 33;
+            // 
+            // txtBirimFiyatStokSatinAlma
+            // 
+            this.txtBirimFiyatStokSatinAlma.BackColor = System.Drawing.Color.White;
+            this.txtBirimFiyatStokSatinAlma.Location = new System.Drawing.Point(238, 56);
+            this.txtBirimFiyatStokSatinAlma.Multiline = true;
+            this.txtBirimFiyatStokSatinAlma.Name = "txtBirimFiyatStokSatinAlma";
+            this.txtBirimFiyatStokSatinAlma.Size = new System.Drawing.Size(100, 22);
+            this.txtBirimFiyatStokSatinAlma.TabIndex = 34;
+            this.txtBirimFiyatStokSatinAlma.Text = "0";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(235, 41);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(54, 13);
+            this.label10.TabIndex = 35;
+            this.label10.Text = "Birim Fiyat";
             // 
             // label7
             // 
@@ -327,14 +373,92 @@ namespace Borsa_App
             this.label7.TabIndex = 33;
             this.label7.Text = "Ürün Satın Alma";
             // 
+            // btncikisyap
+            // 
+            this.btncikisyap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btncikisyap.Location = new System.Drawing.Point(1061, 938);
+            this.btncikisyap.Name = "btncikisyap";
+            this.btncikisyap.Size = new System.Drawing.Size(96, 24);
+            this.btncikisyap.TabIndex = 34;
+            this.btncikisyap.Text = "Çıkış Yap";
+            this.btncikisyap.UseVisualStyleBackColor = true;
+            this.btncikisyap.Click += new System.EventHandler(this.btncikisyap_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1374, 503);
+            this.tabControl1.TabIndex = 35;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.panel1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1366, 477);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Stok Ekleme";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.panel2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1366, 477);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Bakiye İşlemleri";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.gridViewEmirlerim);
+            this.tabPage3.Controls.Add(this.panel3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1366, 477);
+            this.tabPage3.TabIndex = 3;
+            this.tabPage3.Text = "Ürün Satın Alma";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // gridViewEmirlerim
+            // 
+            this.gridViewEmirlerim.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridViewEmirlerim.Location = new System.Drawing.Point(6, 100);
+            this.gridViewEmirlerim.Name = "gridViewEmirlerim";
+            this.gridViewEmirlerim.Size = new System.Drawing.Size(1354, 371);
+            this.gridViewEmirlerim.TabIndex = 36;
+            // 
+            // cmbParaBirimi
+            // 
+            this.cmbParaBirimi.FormattingEnabled = true;
+            this.cmbParaBirimi.Items.AddRange(new object[] {
+            "ABD DOLARI",
+            "EURO",
+            "İNGİLİZ STERLİNİ"});
+            this.cmbParaBirimi.Location = new System.Drawing.Point(89, 30);
+            this.cmbParaBirimi.Name = "cmbParaBirimi";
+            this.cmbParaBirimi.Size = new System.Drawing.Size(61, 21);
+            this.cmbParaBirimi.TabIndex = 27;
+            // 
             // uye_islem_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1065, 510);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1743, 974);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.btncikisyap);
             this.ForeColor = System.Drawing.Color.Black;
             this.Name = "uye_islem_form";
             this.Text = "ÜYE İŞLEM ALANI";
@@ -346,6 +470,11 @@ namespace Borsa_App
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewEmirlerim)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -376,5 +505,14 @@ namespace Borsa_App
         private System.Windows.Forms.TextBox txtMiktarStokSatinAlma;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btncikisyap;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TextBox txtBirimFiyatStokSatinAlma;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView gridViewEmirlerim;
+        private System.Windows.Forms.ComboBox cmbParaBirimi;
     }
 }

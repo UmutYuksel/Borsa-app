@@ -22,7 +22,7 @@ namespace Borsa_App
         
 private void admin_form_Load(object sender, EventArgs e)
         {
-
+            CenterToScreen();
         }
 
         private void button3_Click(object sender, EventArgs e)

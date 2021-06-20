@@ -64,7 +64,10 @@ namespace Borsa_App
             if (kullancı_ad_tb1.Text == "admin" && sifre_tb1.Text == "admin")
             {
                 admin_form admin_panel = new admin_form();
-                admin_panel.Show(); 
+                admin_panel.Show();
+                this.Hide();
+                
+
             }
             else
             {
@@ -85,7 +88,8 @@ namespace Borsa_App
                     {
                         uye_islem_form uye_islem = new uye_islem_form();
                         uye_islem.KullaniciId = int.Parse(dt.Rows[0]["Id"].ToString());
-                        uye_islem.Show(); 
+                        uye_islem.Show();
+                        this.Hide();
                     }
 
 
@@ -138,6 +142,46 @@ namespace Borsa_App
         private void sifre_tb1_Enter(object sender, EventArgs e)
         {
             sifre_tb1.Text = string.Empty;
+        }
+
+        private void sifre_tb1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ad_soyad_tb1_Enter(object sender, EventArgs e)
+        {
+           ad_soyad_tb1.Text = string.Empty;
+        }
+
+        private void kullanıcı_ad_tb2_Enter(object sender, EventArgs e)
+        {
+            kullanıcı_ad_tb2.Text = string.Empty;
+        }
+
+        private void sifre_tb2_Enter(object sender, EventArgs e)
+        {
+            sifre_tb2.Text = string.Empty;
+        }
+
+        private void telefon_tb1_Enter(object sender, EventArgs e)
+        {
+            telefon_tb1.Text = string.Empty;
+        }
+
+        private void tcno_tb1_Enter(object sender, EventArgs e)
+        {
+            tcno_tb1.Text = string.Empty;
+        }
+
+        private void mail_tb1_Enter(object sender, EventArgs e)
+        {
+            mail_tb1.Text = string.Empty;
+        }
+
+        private void adres_tb1_Enter(object sender, EventArgs e)
+        {
+            ad_soyad_tb1.Text = string.Empty;
         }
     }
 }

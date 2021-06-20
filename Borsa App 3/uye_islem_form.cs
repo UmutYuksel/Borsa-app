@@ -20,18 +20,6 @@ namespace Borsa_App
             InitializeComponent();
         }
         SqlConnection baglan = new SqlConnection("Data Source=HOPE;Initial Catalog=proje;Integrated Security=True");
-
-        private void ürün_ekle()
-        {
-            baglan.Open();
-            SqlCommand komut = new SqlCommand("Select *from Kullanicilar", baglan);
-            SqlDataReader oku = komut.ExecuteReader();
-
-
-            baglan.Close();
-        }
-
-
         private void uye_islem_form_Load(object sender, EventArgs e)
         {
             StokListesiDoldur();
@@ -177,19 +165,20 @@ namespace Borsa_App
         {
             baglan.Open();
             var query = @"
-                select 
-	                ks.Id,
+                select
+
+                    ks.Id,
 	                k.KullaniciAd,
 	                s.StokAdi,
 	                ks.Miktar,
                     ks.BirimFiyat,
-	                ks.OnayliMi	
+	                ks.OnayliMi
                 from Kullanicilar k
-                inner join KullaniciStoklari  ks
+                inner join KullaniciStoklari ks
                 on k.Id = ks.KullaniciId
                 inner join Stoklar s
                 on ks.StokId = s.Id
-                where ks.KullaniciId = @KullaniciId ";
+                where ks.KullaniciId = @KullaniciId";
 
             if (stokId != 0)
             {
@@ -210,17 +199,18 @@ namespace Borsa_App
             baglan.Close();
             return dt;
         }
-        private void KullanıcıBakiyeYükleme(float bakiye)
+        private void KullanıcıBakiyeYükleme(float bakiye, string paraBirimi)
         {
-            var mevcutBakiye = KullanıcıBakiyeGetir(KullaniciId);
+            var mevcutBakiye = KullanıcıBakiyeEmirGetir(KullaniciId, paraBirimi);
             baglan.Open();
             if (mevcutBakiye.Bakiye == 0)
             {
-                SqlCommand komut = new SqlCommand("insert into KullaniciBakiye (KullaniciId, Bakiye) values (@KullaniciId, @Bakiye)", baglan);
+                SqlCommand komut = new SqlCommand("insert into KullaniciBakiyeEmir (KullaniciId, Bakiye, GirisParaBirimi) values (@KullaniciId, @Bakiye, @GirisParaBirimi)", baglan);
 
                 komut.Parameters.AddRange(new SqlParameter[] {
                 new SqlParameter { ParameterName = "@KullaniciId", Value = KullaniciId },
                 new SqlParameter { ParameterName = "@Bakiye", Value = bakiye },
+                new SqlParameter { ParameterName = "@GirisParaBirimi", Value = paraBirimi },
 
             });
 
@@ -230,12 +220,12 @@ namespace Borsa_App
             else
             {
                 mevcutBakiye.Bakiye += bakiye;
-                SqlCommand komut = new SqlCommand("Update KullaniciBakiye  set Bakiye = @Bakiye, OnayliMi = 0 Where KullaniciId = @KullaniciId", baglan);
+                SqlCommand komut = new SqlCommand("Update KullaniciBakiyeEmir set Bakiye = @Bakiye Where KullaniciId = @KullaniciId and GirisParaBirimi = @GirisParaBirimi", baglan);
 
                 komut.Parameters.AddRange(new SqlParameter[] {
                 new SqlParameter { ParameterName = "@KullaniciId", Value = KullaniciId },
                 new SqlParameter { ParameterName = "@Bakiye", Value = mevcutBakiye.Bakiye },
-
+                new SqlParameter { ParameterName = "@GirisParaBirimi", Value = paraBirimi }
             });
                 komut.ExecuteNonQuery();
             }
@@ -244,8 +234,35 @@ namespace Borsa_App
             KullaniciBakiyeDoldur();
 
         }
+
+        private BakiyeBilgileri KullanıcıBakiyeEmirGetir(int kullaniciId, string girisParaBirimi)
+        {
+            var bakiyeItem = new BakiyeBilgileri();
+
+            baglan.Open();
+            SqlCommand komut = new SqlCommand("select top (1) Bakiye, GirisParaBirimi from KullaniciBakiyeEmir where KullaniciId = @KullaniciId and GirisParaBirimi = @GirisParaBirimi", baglan);
+            komut.Parameters.AddRange(new SqlParameter[] {
+                new SqlParameter { ParameterName = "@KullaniciId", Value = KullaniciId },
+                new SqlParameter { ParameterName = "@GirisParaBirimi", Value = girisParaBirimi },
+            });
+            SqlDataReader oku = komut.ExecuteReader();
+
+            while (oku.Read())
+            {
+                bakiyeItem.Bakiye = float.Parse(oku["Bakiye"].ToString());
+                bakiyeItem.GirisParaBirimi = oku["GirisParaBirimi"].ToString(); 
+            }
+            baglan.Close();
+            return bakiyeItem;
+        }
+
         private void para_yükleme_b1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(cmbParaBirimi.SelectedItem.ToString()))
+            {
+                MessageBox.Show("Yükleme yapılacak para birimini seçiniz.");
+                return;
+            }
             if (!float.TryParse(hesap_is_tb1.Text, out float bakiye))
             {
                 MessageBox.Show("Uygun formatta para girişi yapınız.");
@@ -256,7 +273,8 @@ namespace Borsa_App
                 MessageBox.Show("0'dan büyük miktarda para girişi yapınız.");
                 return;
             }
-            KullanıcıBakiyeYükleme(bakiye);
+
+            KullanıcıBakiyeYükleme(bakiye, cmbParaBirimi.SelectedItem.ToString());
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -272,6 +290,12 @@ namespace Borsa_App
                 return;
             }
 
+            if (!int.TryParse(txtBirimFiyatStokSatinAlma.Text, out int birimFiyat))
+            {
+                MessageBox.Show("Uygun formatta birim fiyat girişi yapınız.");
+                return;
+            }
+
             var selectedItem = (StokItem)cmbStokSecimiSatinAlma.SelectedItem;
             if (selectedItem == null)
             {
@@ -282,7 +306,7 @@ namespace Borsa_App
 
             SatinAl(stokId, miktar);
 
-        }
+        } 
 
         private void SatinAl(int stokId, int miktar)
         {
@@ -316,7 +340,7 @@ namespace Borsa_App
             StokDegisimi(KullaniciId, stokId, stokHareketleri.Sum(x => x.Miktar));
             foreach (var stokHareketi in stokHareketleri)
             {
-                StokDegisimi(stokHareketi.SaticiKullaniciId, stokHareketi.StokId,  -1 * stokHareketi.Miktar);
+                StokDegisimi(stokHareketi.SaticiKullaniciId, stokHareketi.StokId, -1 * stokHareketi.Miktar);
             }
         }
 
@@ -328,13 +352,28 @@ namespace Borsa_App
             {
                 miktar = int.Parse(dt.Rows[0]["Miktar"].ToString()) + miktar;
                 baglan.Open();
-                SqlCommand komut = new SqlCommand("update KullaniciStoklari set Miktar = @Miktar where KullaniciId = @KullaniciId and StokId = @StokId", baglan);
 
-                komut.Parameters.AddRange(new SqlParameter[] {
-                new SqlParameter { ParameterName = "@KullaniciId", Value = kullaniciId },
-                new SqlParameter { ParameterName = "@StokId", Value = stokId },
-                new SqlParameter { ParameterName = "@Miktar", Value = miktar },
-            });
+                SqlCommand komut = null;
+
+                if (miktar != 0)
+                {
+                    komut = new SqlCommand("update KullaniciStoklari set Miktar = @Miktar where KullaniciId = @KullaniciId and StokId = @StokId", baglan);
+
+                    komut.Parameters.AddRange(new SqlParameter[] {
+                        new SqlParameter { ParameterName = "@KullaniciId", Value = kullaniciId },
+                        new SqlParameter { ParameterName = "@StokId", Value = stokId },
+                        new SqlParameter { ParameterName = "@Miktar", Value = miktar },
+                    });
+                }
+                else
+                {
+                    komut = new SqlCommand("DELETE KullaniciStoklari where KullaniciId = @KullaniciId and StokId = @StokId", baglan);
+
+                    komut.Parameters.AddRange(new SqlParameter[] {
+                        new SqlParameter { ParameterName = "@KullaniciId", Value = kullaniciId },
+                        new SqlParameter { ParameterName = "@StokId", Value = stokId }
+                    });
+                }
 
                 komut.ExecuteNonQuery();
                 baglan.Close();
@@ -355,7 +394,7 @@ namespace Borsa_App
                 baglan.Close();
             }
         }
-         
+
         private void SatisBakiyeleriniDagit(List<StokHareketi> stokHareketleri)
         {
             if (stokHareketleri.Count == 0)
@@ -389,7 +428,7 @@ namespace Borsa_App
             else
             {
                 mevcutBakiye.Bakiye += bakiye;
-                SqlCommand komut = new SqlCommand("Update KullaniciBakiye  set Bakiye = @Bakiye, OnayliMi = 0 Where KullaniciId = @KullaniciId", baglan);
+                SqlCommand komut = new SqlCommand("Update KullaniciBakiye  set Bakiye = @Bakiye, OnayliMi = 1 Where KullaniciId = @KullaniciId", baglan);
 
                 komut.Parameters.AddRange(new SqlParameter[] {
                 new SqlParameter { ParameterName = "@KullaniciId", Value = kullaniciId },
@@ -398,7 +437,7 @@ namespace Borsa_App
             });
                 komut.ExecuteNonQuery();
             }
-            baglan.Close(); 
+            baglan.Close();
         }
 
         private bool BakiyeKontrol(List<StokHareketi> stokHareketleri)
@@ -425,7 +464,7 @@ namespace Borsa_App
                 if (alinabilenMiktar < 0)
                 {
                     alinacakMiktar = -1 * alinabilenMiktar;
-                    alinabilenMiktar = miktar - alinacakMiktar; 
+                    alinabilenMiktar = miktar - alinacakMiktar;
                 }
                 else
                 {
@@ -460,6 +499,17 @@ namespace Borsa_App
             baglan.Close();
             return dt;
         }
+
+
+
+        private void btncikisyap_Click(object sender, EventArgs e)
+        {
+            frm_login ana_ekran = new frm_login();
+            ana_ekran.Show(); ;
+            this.Close();
+        }
+
+
     }
     public class StokItem
     {
@@ -470,6 +520,7 @@ namespace Borsa_App
     {
         public int Id { get; set; }
         public float Bakiye { get; set; }
+        public string GirisParaBirimi { get; set; }
         public bool OnayliMi { get; set; }
     }
     public class StokHareketi
@@ -480,5 +531,15 @@ namespace Borsa_App
         public int Miktar { get; set; }
         public int BirimFiyat { get; set; }
 
+    }
+    class StokEmir
+    {
+        public int Id { get; set; }
+        public int KullaniciId { get; set; }
+        public int StokId { get; set; }
+        public float Miktar { get; set; }
+        public float BirimFiyat { get; set; }
+        public DateTime Tarih { get; set; }
+        public int Status { get; set; }
     }
 }
